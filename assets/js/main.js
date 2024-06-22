@@ -2,11 +2,17 @@
 
 const getProductData = () => {
   const productName = prompt('Введите название товара');
-  const productQuantity = Number(prompt('Введите количество товара'));
+  const productQuantity = +prompt('Введите количество товара');
   const productCategory = prompt('Введите категорию товара');
-  const productPrice = Number(prompt('Введите цену товара'));
+  const productPrice = +prompt('Введите цену товара');
+  const totalProductPrice = productQuantity * productPrice;
 
-  console.log(`На складе ${productQuantity} единицы товара "${productName}" на сумму ${productQuantity * productPrice} золотых`);
+  if(!isNaN(productQuantity) || !isNaN(productPrice)) {
+    console.log(`На складе ${productQuantity} единицы товара "${productName}" на сумму ${totalProductPrice} золотых`);
+  } else {
+    console.log('Вы ввели некорректные данные');
+  }
+
 }
 
 getProductData();
