@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Проект CRM-ShopOnline</title>
+</head>
+<body>
+  <form action="https://jsonplaceholder.typicode.com/posts" method="POST" name="addProduct">
+    <h2>Добавить товар</h2>
+    <fieldset>
+      <label for="name">Наименование</label>
+      <input type="text" name="name" id="name" required>
+
+      <label for="category">Категория</label>
+      <input type="text" name="category" id="category" required>
+
+      <label for="units">Единицы измерения</label>
+      <input type="text" name="units" id="units" required>
+
+      <div>
+        <label for="discount">Дисконт</label>
+        <input type="checkbox" aria-label="Активирует скидку">
+        <input type="text" name="discount" id="discount" disabled required>
+      </div>
+
+      <label for="description">Описание</label>
+      <textarea rows="5" name="description" id="description" required></textarea>
+
+      <label for="count">Количество</label>
+      <input type="number" name="count" id="count" required>
+
+      <label for="price">Цена</label>
+      <input type="number" name="price" id="price" required>
+
+      <input type="file" name="image" aria-label="Фото товара" required>
+    </fieldset>
+
+    <button type="submit">Добавить товар</button>
+  </form>
+
+  <script src="./assets/js/main.js"></script>
+  <script src="./assets/js/einstein.js"></script>
+</body>
+</html>
