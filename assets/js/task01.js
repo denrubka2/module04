@@ -3,9 +3,8 @@
 const convertEuroToRubles = (sum) => {
   const dollarPerEuro = 1.2;
   const rublePerDollar = 73;
-  const rubles = sum * dollarPerEuro * rublePerDollar;
 
-  return rubles;
+  return sum * dollarPerEuro * rublePerDollar;
 }
 
 console.log(convertEuroToRubles('25'));;

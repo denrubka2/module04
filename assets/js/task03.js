@@ -7,7 +7,7 @@ const calculate = (cartAmount, cartQuantity, promocode) => {
     totalPrice -= (totalPrice / 100 * 3);
   }
 
-  if(totalPrice > 30000) {
+  if(cartAmount > 30000) {
     totalPrice -= (cartAmount - 30000) / 100 * 15;
   }
 
