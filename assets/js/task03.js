@@ -1,25 +1,13 @@
 'use strict';
 
-const calculate = (cartAmount, cartQuantity, promocode) => {
-  let totalPrice = cartAmount;
-
-  if(cartQuantity > 10) {
-    totalPrice -= (totalPrice / 100 * 3);
+const stringReverse = (str) => {
+  let result = '';
+  for(let i = str.length - 1; i >= 0; i--) {
+    result += str[i];
   }
 
-  if(cartAmount > 30000) {
-    totalPrice -= (cartAmount - 30000) / 100 * 15;
-  }
-
-  if(promocode === 'METHED') {
-    totalPrice -= totalPrice / 100 * 10;
-  }
-
-  if(promocode === 'G3H2Z1' && totalPrice > 2000) {
-    totalPrice -= 500;
-  }
-
-  return totalPrice;
+  return result;
 }
 
-console.log(calculate(32000, 11, 'G3H2Z1'));
+
+console.log(stringReverse('ПрИвет мир'));

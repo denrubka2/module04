@@ -1,10 +1,10 @@
 'use strict';
 
-const firstLetterToUpperCase = (str) => {
-  const endStr = str.substring(1).toLowerCase();
-  const startStr = str[0].toUpperCase();
-
-  return startStr + endStr;
+const isPrime = (number) => {
+  for(let i = 2; i < number; i++) {
+    if(number % i === 0) return false;
+  }
+  return true;
 }
 
-console.log(firstLetterToUpperCase('привеТ мИр!'));
+console.log(isPrime(17));

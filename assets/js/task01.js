@@ -1,10 +1,9 @@
 'use strict';
 
-const convertEuroToRubles = (sum) => {
-  const dollarPerEuro = 1.2;
-  const rublePerDollar = 73;
+for(let i = 1; i <= 10; i++) {
+  console.log('-------------');
 
-  return sum * dollarPerEuro * rublePerDollar;
+  for(let j = 1; j <= 10; j++) {
+    console.log(`${i} ^ ${j} = ${i ** j}`);
+  }
 }
-
-console.log(convertEuroToRubles('25'));;
