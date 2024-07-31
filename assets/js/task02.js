@@ -1,19 +1,14 @@
 'use strict';
 
-const isPrime = (number) => {
-  if(number < 2) return false;
+const allCashbox = [4500, 3210, 650, 1250, 7830, 990, 13900, 370];
 
-  if(number === 2) return true;
+const getAverageValue = (cashboxArr) => {
+  if(!Array.isArray(cashboxArr)) return 'Не массив';
 
-  for(let i = 2; i < number; i++) {
-    if(number % i === 0) return false;
-  }
+  const arr = [...cashboxArr];
+  const result = arr.reduce((sum, current) => sum + current, 0);
 
-  return true;
+  return Math.floor(result / arr.length);
 }
 
-for(let i = -100, count = 0; i <= 1000; i++) {
-  if(isPrime(i)) {
-    console.log(`${++count}) Простое число - ${i}`);
-  }
-}
+console.log(getAverageValue(allCashbox));

@@ -1,9 +1,14 @@
 'use strict';
 
-for(let i = 1; i <= 10; i++) {
-  console.log('-------------');
+const allStudents = ['Иванов', 'Петров', 'Сидоров', 'Кузнецов', 'Смирнов', 'Попов', 'Соколов'];
+const failedStudents = ['Сидоров', 'Смирнов', 'Попов'];
 
-  for(let j = 1; j <= 10; j++) {
-    console.log(`${i} ^ ${j} = ${i ** j}`);
-  }
+const filter = (studentsArr, failedStudentsArr) => {
+  if(!Array.isArray(studentsArr) || !Array.isArray(failedStudentsArr)) return 'Не массив';
+
+  const arr = [...studentsArr];
+
+  return arr.filter(item => !failedStudentsArr.includes(item));
 }
+
+console.log(filter(allStudents, failedStudents));
