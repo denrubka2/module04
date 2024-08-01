@@ -2,13 +2,6 @@
 
 const names = ['Noah', 'Liam', 'Mason', 'Jacob', 'Robot', 'William', 'Ethan', 'Michael', 'Alexander'];
 
-const addPrefix = (namesArr, prefix) => {
-  if(!Array.isArray(namesArr)) return 'Не массив';
-
-  const arr = [...namesArr];
-  const result = arr.map(item => `${prefix} ${item}`);
-
-  return result;
-}
+const addPrefix = (namesArr, prefix) => namesArr.map(item => `${prefix} ${item}`);
 
 console.log(addPrefix(names, 'Mr'));
