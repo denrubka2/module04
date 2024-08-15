@@ -1,8 +1,6 @@
 'use strict';
 
-const allStudents = ['Иванов', 'Петров', 'Сидоров', 'Кузнецов', 'Смирнов', 'Попов', 'Соколов'];
-const failedStudents = ['Сидоров', 'Смирнов', 'Попов'];
+const randomNumbersArr = quantity => [...new Array(quantity)]
+.map( () => Math.floor( ( Math.random() * 100 + 1 ) ) );
 
-const filter = (studentsArr, failedStudentsArr) => studentsArr.filter(item => !failedStudentsArr.includes(item));
-
-console.log(filter(allStudents, failedStudents));
+console.log(randomNumbersArr(100));

@@ -1,7 +1,24 @@
 'use strict';
 
-const names = ['Noah', 'Liam', 'Mason', 'Jacob', 'Robot', 'William', 'Ethan', 'Michael', 'Alexander'];
+const randomNumbersArr3 = ( quantity, n, m, type ) => {
+  const arr = [...new Array(quantity)];
 
-const addPrefix = (namesArr, prefix) => namesArr.map(item => `${prefix} ${item}`);
+  if(type === 'even') {
+    return arr.map( () => {
+      const num = Math.floor((Math.random() * ( Math.max(n, m) - Math.min(n, m)) + Math.min(n, m)));
 
-console.log(addPrefix(names, 'Mr'));
+      return num % 2 === 0 ? num : num + 1;
+    });
+  }
+
+  if(type === 'odd') {
+    return arr.map( () => {
+      const num = Math.floor((Math.random() * ( Math.max(n, m) - Math.min(n, m)) + Math.min(n, m) + 1));
+
+      return num % 2 !== 0 ? num : num - 1;
+    });
+  }
+
+};
+
+console.log(randomNumbersArr3(100, 50, -10, 'even'));

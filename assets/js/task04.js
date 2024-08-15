@@ -1,21 +1,15 @@
 'use strict'
 
-const allCashbox2 = [
-  [12, 4500], 
-  [7, 3210], 
-  [4, 650], 
-  [3, 1250], 
-  [9, 7830], 
-  [1, 990], 
-  [6, 13900], 
-  [1, 370]
-];
+const getLeapYear = (n, m) => {
+  const leapYears = [];
 
-const getAveragePriceGoods = (cashArr) => {
-  const res = cashArr.reduce((acc, current) => [acc[0] + current[0], acc[1] + current[1]])
-  .reduce((acc, value) => value / acc);
+  for (let i = Math.min(n, m); i < Math.max(n, m); i++) {
+    if (i % 4 === 0 && i % 100 !== 0 || i % 400 === 0) {
+      leapYears.push(i);
+    }
+  };
 
-  return Math.floor(res);
+  return leapYears;
 }
 
-console.log(getAveragePriceGoods(allCashbox2));
+console.log(getLeapYear(2100, 2000));
