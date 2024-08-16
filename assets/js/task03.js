@@ -1,24 +1,22 @@
 'use strict';
 
 const randomNumbersArr3 = ( quantity, n, m, type ) => {
-  const arr = [...new Array(quantity)];
+  const result = [];
+  const rule = ['even', 'odd'].indexOf(type);
+  const min = Math.min(n, m);
+  const max = Math.max(n, m);
 
-  if(type === 'even') {
-    return arr.map( () => {
-      const num = Math.floor((Math.random() * ( Math.max(n, m) - Math.min(n, m)) + Math.min(n, m)));
+  for(let i = 0; i < quantity; i++) {
+    let num = Math.floor((Math.random() * ( max - min ) + min ));
 
-      return num % 2 === 0 ? num : num + 1;
-    });
+    if(rule !== -1 && (Math.abs(num) % 2) !== rule) {
+      num++;
+    }
+
+    result.push(num);
   }
 
-  if(type === 'odd') {
-    return arr.map( () => {
-      const num = Math.floor((Math.random() * ( Math.max(n, m) - Math.min(n, m)) + Math.min(n, m) + 1));
-
-      return num % 2 !== 0 ? num : num - 1;
-    });
-  }
-
+  return result;
 };
 
-console.log(randomNumbersArr3(100, 50, -10, 'even'));
+console.log(randomNumbersArr3(100, 51, -11));
