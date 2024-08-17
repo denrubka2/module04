@@ -2,7 +2,6 @@
 
 const cart = {
   items: [],
-  _totalPrice: 0,
   count: 0,
 
   get totalPrice() {
@@ -34,7 +33,7 @@ const cart = {
 
   print() {
     console.log(`Все товары: ${JSON.stringify(this.items)}`);
-    console.log(`Общая стоимость товаров: } спичек`);
+    console.log(`Общая стоимость товаров: ${this.totalPrice} спичек`);
   },
 }
 
