@@ -8,10 +8,6 @@ const cart = {
     return this.calculateItemPrice();
   },
 
-  set totalPrice(value) {
-    this._totalPrice = value;
-  },
-
   add(productTitle, productPrice, productQuantity = 1) {
     this.items.push({ productTitle, productPrice, productQuantity });
     this.increaseCount(productQuantity);
@@ -27,7 +23,6 @@ const cart = {
 
   clear() {
     this.items = [];
-    this.totalPrice = 0;
     this.count = 0;
   },
 
