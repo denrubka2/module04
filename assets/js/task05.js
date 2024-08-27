@@ -3,9 +3,24 @@
 const cart = {
   items: [],
   count: 0,
+  discount: 0,
 
   get totalPrice() {
     return this.calculateItemPrice();
+  },
+
+  set setDiscount(promocode) {
+    if (promocode === 'METHED') {
+      this.discount = 15;
+      return;
+    }
+
+    if (promocode === 'NEWYEAR') {
+      this.discount = 21;
+      return;
+    }
+
+    this.discount = 0;
   },
 
   add(productTitle, productPrice, productQuantity = 1) {
@@ -18,8 +33,10 @@ const cart = {
   },
 
   calculateItemPrice() {
-    return this.items
+    const itemsPrice = this.items
         .reduce((acc, current) => acc + current['productPrice'], 0);
+
+    return itemsPrice - (itemsPrice / 100 * this.discount).toFixed(2);
   },
 
   clear() {
@@ -36,5 +53,3 @@ const cart = {
 cart.add('Носки', 1000, 2);
 cart.add('Футболка', 1500);
 cart.add('Штаны', 1375);
-
-console.log(cart.print());
