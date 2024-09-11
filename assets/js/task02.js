@@ -1,13 +1,15 @@
 'use strict';
 
 const arrFoo = (arr = []) => {
-  arr.push(Math.round(Math.random() * 10));
+  const array = [...arr];
+  const sum = array.reduce((acc, current) => acc + current, 0);
 
-  const sum = arr.reduce((acc, current) => acc + current, 0);
+  if (sum < 50) {
+    array.push(Math.round(Math.random() * 10));
+    return arrFoo(array);
+  }
 
-  if (sum < 50) arrFoo(arr);
-
-  return arr;
+  return array;
 };
 
-console.log(arrFoo([1, 2]));
+console.log(arrFoo([1]));

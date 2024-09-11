@@ -2,71 +2,74 @@
 
 const gameBot = () => {
   const setRange = () => {
-    let num1 = prompt('Введите первое число');
-    let num2 = prompt('Введите второе число');
+    const range = [];
 
-    if (num1 === null || num2 === null) {
-      alert('Игра окончена...');
-    }
+    while (range.length < 2 && !range.includes(null)) {
+      const num = prompt(`Введите ${range.length ? 'второе' : 'первое'} число`);
 
-    while (!isNaN(Number(num1)) && isNaN(Number(num2))) {
-      if (isNaN(Number(num1))) {
-        num1 = prompt('Введите первое число');
-      }
-
-      if (isNaN(Number(num2))) {
-        num2 = prompt('Введите второе число');
+      if (num?.trim() !== '' && !isNaN(num) && !range.includes(num)) {
+        range.push(num);
       }
     }
 
-    return [num1, num2];
+    return range.includes(null) ? false :
+      range.sort((a, b) => (+a > +b ? 1 : -1));
   };
 
-  const [num1, num2] = setRange();
-  const hiddenNumber = Math.floor((Math.random() *
-    (Math.max(num1, num2) - Math.min(num1, num2) + 1) + Math.min(num1, num2)));
-  const answers = [];
-  let attempts = (Math.max(num1, num2) - Math.min(num1, num2) + 1) /
-    100 * 30 - 1;
-  let answer = prompt(`Угадай число от ${Math.min(num1, num2)}
-    до ${Math.max(num1, num2)}`);
+  const range = setRange();
 
-  const tryGuess = () => {
-    switch (true) {
-      case answer === null:
-        alert('Игра окончена...');
-        break;
-      case Number.isNaN(+answer):
-      case answer.trim() === '':
-        answer = prompt('Введи число!');
-        tryGuess();
-        break;
-      case attempts === 0:
-        alert('Попытки кончились');
-        break;
-      case answers.some((item) => +item === +answer):
-        answer = prompt('Это число вы уже вводили. Введите другое');
-        tryGuess();
-        break;
-      case +answer > hiddenNumber:
-        answers.push(answer);
-        attempts -= 1;
-        answer = prompt('Меньше!');
-        tryGuess();
-        break;
-      case +answer < hiddenNumber:
-        answers.push(answer);
-        attempts -= 1;
-        answer = prompt('Больше!');
-        tryGuess();
-        break;
-      case +answer === hiddenNumber:
-        alert('Правильно!');
-        break;
-    }
-  };
+  if (range) {
+    const [min, max] = range;
+    const hiddenNumber = Math.floor(Math.random() * (+max - +min + 1) + +min);
+    const answers = [];
+    const attempts = Math.round((+max - +min + 1) / 100 * 30 - 1);
 
-  tryGuess();
+    console.log('hiddenNumber: ' + hiddenNumber);
+    console.log('attempts: ' + attempts);
+
+    const tryGuess = (answer) => {
+      answer = prompt(answer);
+
+      switch (true) {
+        case answer === null:
+          alert('Игра окончена...');
+          return answers;
+        case Number.isNaN(+answer):
+        case +answer > +max:
+        case +answer < +min:
+        case answer.trim() === '':
+          answer = `Введи число от ${min} до ${max}!`;
+          break;
+        case answers.length === +attempts:
+          +answer === hiddenNumber ?
+            alert('Правильно!') :
+            alert('Попытки кончились');
+          answers.push(answer);
+          return answers;
+        case answers.some((item) => +item === +answer):
+          answer = 'Это число вы уже вводили. Введите другое';
+          break;
+        case +answer > hiddenNumber:
+          answers.push(answer);
+          answer = 'Меньше!';
+          break;
+        case +answer < hiddenNumber:
+          answers.push(answer);
+          answer = 'Больше!';
+          break;
+        case +answer === hiddenNumber:
+          alert('Правильно!');
+          answers.push(answer);
+          return answers;
+      }
+
+      return tryGuess(answer);
+    };
+
+    return tryGuess(`Угадай число от ${min} до ${max}`);
+  } else {
+    alert('Игра окончена...');
+  }
 };
 
 // gameBot();

@@ -3,24 +3,15 @@
 const cart = {
   items: [],
   count: 0,
-  discount: 0,
+  _discount: 0,
 
   get totalPrice() {
     return this.calculateItemPrice();
   },
 
-  set setDiscount(promocode) {
-    if (promocode === 'METHED') {
-      this.discount = 15;
-      return;
-    }
-
-    if (promocode === 'NEWYEAR') {
-      this.discount = 21;
-      return;
-    }
-
-    this.discount = 0;
+  set discount(promocode) {
+    if (promocode === 'METHED') this._discount = 15;
+    if (promocode === 'NEWYEAR') this._discount = 21;
   },
 
   add(productTitle, productPrice, productQuantity = 1) {
