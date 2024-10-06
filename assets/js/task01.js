@@ -1,5 +1,5 @@
 'use strict';
-
+ 
 const gameBot = () => {
   const setRange = () => {
     const range = [];
