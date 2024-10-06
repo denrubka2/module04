@@ -14,8 +14,13 @@
   const getFigure = () => {
     const userFigure = prompt(`${FIGURES_RUS.slice(',')}?`);
     const pcFigure = FIGURES_RUS[getRandomIntInclusive(0, FIGURES_RUS.length - 1)];
+    const isWord = FIGURES_RUS.findIndex(str => str.includes(userFigure));
 
-
+    switch (true) {
+      case userFigure === null:
+        return null;
+        break;
+    }
   }
 
   getFigure();
